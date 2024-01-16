@@ -1,18 +1,64 @@
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
-    
-    const result = n1 + n2 
-    if (showResult) {
-        console.log(phrase + result);   
-    } else {
-        return result
-    }
+// const person: {
+//     name: string;
+//     age:number;
+// } = {
+//     name: 'Precell',
+//     age:26
+// }
 
+// const person: object = {
+//     name: 'Precell',
+//     age:26
+// }
+
+// const person: {
+//     name: string;
+//     age: number;
+//     hobbies: string[];
+//     role:[number, string]
+// } = {
+//     name: 'Precell',
+//     age:26,
+//     hobbies:['sports', 'cooking'],
+//     role: [2, 'author']
+// }
+
+// person.role.push('admin', 'cooker')
+// person.role[1] = 10 ERROR!!!
+// person.role = [0, 'admin'. 'user'] ERROR !!!
+
+
+// Enums
+
+// const ADMIN = 0;
+// const READ_ONLY = 1;
+// const AUTHOR = 2;
+
+
+// enum Role {ADMIN, READ_ONLY, AUTHOR}
+// enum Role {ADMIN = 5, READ_ONLY, AUTHOR}
+enum Role {ADMIN = 'ADMIN', READ_ONLY = 200, AUTHOR = 300}
+
+
+const person = {
+    name: 'Precell',
+    age:26,
+    hobbies:['sports', 'cooking'],
+    role: Role.ADMIN
 }
 
-const number1 = 5;
-const number2 = 2.8
-const printResult = true;
-const resultPhrase = 'Result is: ';
+if (person.role === Role.ADMIN){
+    console.log('is admin');
+    
+}
 
-add(number1, number2, printResult, resultPhrase)
+let favoriteActivities: string[]
+favoriteActivities = ['sports']
 
+for(const hobby of person.hobbies){
+    console.log(hobby.toUpperCase());
+    // console.log(hobby.map()); ERROR!!!
+    
+}
+
+console.log(person.name);
