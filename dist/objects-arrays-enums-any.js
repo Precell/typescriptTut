@@ -36,7 +36,7 @@ var Role;
     Role[Role["READ_ONLY"] = 200] = "READ_ONLY";
     Role[Role["AUTHOR"] = 300] = "AUTHOR";
 })(Role || (Role = {}));
-const person = {
+var person = {
     name: 'Precell',
     age: 26,
     hobbies: ['sports', 'cooking'],
@@ -45,9 +45,10 @@ const person = {
 if (person.role === Role.ADMIN) {
     console.log('is admin');
 }
-let favoriteActivities;
+var favoriteActivities;
 favoriteActivities = ['sports'];
-for (const hobby of person.hobbies) {
+for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
     console.log(hobby.toUpperCase());
     // console.log(hobby.map()); ERROR!!!
 }

@@ -9,14 +9,14 @@ function printResults(num) {
 printResults(adds(5, 12));
 // FUNCTION TYPES AND CALLBACKS
 function addAndHandle(n1, n2, cb) {
-    const result = n1 + n2;
+    var result = n1 + n2;
     cb(result);
 }
 // FUNCTION AS TYPES
-let combineValue;
+var combineValue;
 combineValue = adds;
 // combineValue = printResult() ERROR!!!
 console.log(combineValue(8, 8));
-addAndHandle(23, 23, (result) => {
+addAndHandle(23, 23, function (result) {
     console.log(result);
 });
