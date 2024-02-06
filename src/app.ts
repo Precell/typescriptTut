@@ -61,7 +61,7 @@ const activeHobbies = ['Hiking'];
 
 const [ ...remainingHobbies] = hobbies
 
-console.log(remainingHobbies, 'remaining hobbies');
+// console.log(remainingHobbies, 'remaining hobbies');
 
 
 
@@ -86,7 +86,7 @@ const newPerson = {
 
 const {fname:userName, age, address} = newPerson
 
-console.log(userName, age, address);
+// console.log(userName, age, address);
 
 
 const add = (...numbers: number[]) => {
@@ -99,7 +99,7 @@ const add = (...numbers: number[]) => {
 const addedNumbers = add(1,2,4,23)
 // const addedNumbers = add(1,2,4)                          ****__When working with Tuples__****
 
-console.log(addedNumbers);
+// console.log(addedNumbers);
 
 
 

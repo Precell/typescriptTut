@@ -1,9 +1,9 @@
-class Department {
+abstract class Department {
   // name: string;
   // private employees: string[] = [];
   static fiscalYear = 2020
   protected employees: string[] = [];
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.name = n;
     // console.log(this.fiscalYear);
     // console.log(Department.fiscalYear);
@@ -14,9 +14,7 @@ class Department {
     return { name: name };
   }
 
-  describe(this: Department) {
-    console.log(`Department(${this.id}): ${this.name} `);
-  }
+  abstract describe(this: Department): void;
 
   addEmployee(employee: string) {
     this.employees.push(employee);
@@ -30,7 +28,46 @@ class Department {
 
 const employee1 = Department.createEmploy("Jason Derulo");
 
-console.log(employee1, Department.fiscalYear);
+// console.log(employee1, Department.fiscalYear);
+
+class Accounting extends Department {
+  admins: string[];
+  private static instance: Accounting
+  
+  private  constructor(id: string, admins: string[]) {
+    super(id, "Acc");
+    this.admins = admins;
+  }
+
+  static getInstance(){
+    if (Accounting.instance) {
+      return this.instance;
+    }
+    this.instance = new Accounting('onlyAccDept', [])
+    return this.instance
+  }
+
+  describe() {
+    console.log("Accounting Department Id " + this.id) ;
+  }
+}
+
+const accounting = Accounting.getInstance()
+const accounting2 = Accounting.getInstance()
+// accounting.name = 'Accounting'
+// accounting.name = "Accounting";
+accounting.addEmployee("Messi");
+accounting.addEmployee("Jane");
+accounting.describe();
+
+console.log(accounting, accounting2);
+
+
+// accounting.printEmployeeInfor();
+// accounting.employees[2] = 'Kilom'
+// const accountingCopy = { name: "Dummy", describe: accounting.describe };
+// accountingCopy.describe();
+// console.log(accounting);
 
 class ITDepartment extends Department {
   admins: string[];
@@ -38,31 +75,34 @@ class ITDepartment extends Department {
     super(id, "IT");
     this.admins = admins;
   }
+  describe() {
+    console.log("It Department Id " + this.id, this.employees) ;
+  }
 }
-
-const accounting = new ITDepartment("teys", ["selasieh"]);
-accounting.name = "accounting";
-accounting.addEmployee("Messi");
-accounting.addEmployee("Jane");
-accounting.printEmployeeInfor();
-
-// accounting.employees[2] = 'Kilom'
-// const accountingCopy = { name: "Dummy", describe: accounting.describe };
-// accountingCopy.describe();
-
-// console.log(accounting);
-accounting.describe();
-const It = new ITDepartment("d1231", ["selasieh"]);
+const It = new ITDepartment("ItId", ["selasieh"]);
 It.addEmployee("james");
+// It.name = 'Information and Technology'
 It.addEmployee("Berlin");
-It.printEmployeeInfor();
+It.addEmployee("Jonh");
+It.describe()
 
-console.log(It);
+// It.printEmployeeInfor();
+// console.log(It);
 // console.log(accounting);
-It.describe();
+// It.describe();
+
 
 class Finance extends Department {
   private lastReport: string;
+  constructor(id: string, private reports: string[]) {
+    super(id, "Finance");
+    this.lastReport = reports[0];
+  }
+
+  describe() {
+    console.log("Finance Department ID " + this.id);
+    
+  }
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -78,11 +118,7 @@ class Finance extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
-    super(id, "Finance");
-    this.lastReport = reports[0];
-  }
-
+ 
   addEmployee(name: string) {
     if (name == "Max") {
       return;
@@ -102,17 +138,17 @@ class Finance extends Department {
 
 const finance = new Finance("123test123", []);
 
-console.log(finance);
+// console.log(finance);
 finance.addEmployee("Miles 8000");
 finance.addEmployee("Precell 84738");
 finance.addReport("There have been a couple of unfavorable outcomes");
 finance.addReport("These people they think that we are joking");
 finance.mostRecentReport = "Year End Report";
-console.log(finance.mostRecentReport);
-
 finance.addEmployee("Max");
 finance.addEmployee("Drake");
 
-finance.describe();
-finance.printEmployeeInfor();
-finance.getReports();
+// console.log(finance.mostRecentReport);
+// finance.describe();
+// finance.printEmployeeInfor();
+// finance.getReports();
+// finance.describe()

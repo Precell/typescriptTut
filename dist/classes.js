@@ -26,9 +26,6 @@ var Department = /** @class */ (function () {
     Department.createEmploy = function (name) {
         return { name: name };
     };
-    Department.prototype.describe = function () {
-        console.log("Department(".concat(this.id, "): ").concat(this.name, " "));
-    };
     Department.prototype.addEmployee = function (employee) {
         this.employees.push(employee);
     };
@@ -42,7 +39,39 @@ var Department = /** @class */ (function () {
     return Department;
 }());
 var employee1 = Department.createEmploy("Jason Derulo");
-console.log(employee1, Department.fiscalYear);
+// console.log(employee1, Department.fiscalYear);
+var Accounting = /** @class */ (function (_super) {
+    __extends(Accounting, _super);
+    function Accounting(id, admins) {
+        var _this = _super.call(this, id, "Acc") || this;
+        _this.admins = admins;
+        return _this;
+    }
+    Accounting.getInstance = function () {
+        if (Accounting.instance) {
+            return this.instance;
+        }
+        this.instance = new Accounting('onlyAccDept', []);
+        return this.instance;
+    };
+    Accounting.prototype.describe = function () {
+        console.log("Accounting Department Id " + this.id);
+    };
+    return Accounting;
+}(Department));
+var accounting = Accounting.getInstance();
+var accounting2 = Accounting.getInstance();
+// accounting.name = 'Accounting'
+// accounting.name = "Accounting";
+accounting.addEmployee("Messi");
+accounting.addEmployee("Jane");
+accounting.describe();
+console.log(accounting, accounting2);
+// accounting.printEmployeeInfor();
+// accounting.employees[2] = 'Kilom'
+// const accountingCopy = { name: "Dummy", describe: accounting.describe };
+// accountingCopy.describe();
+// console.log(accounting);
 var ITDepartment = /** @class */ (function (_super) {
     __extends(ITDepartment, _super);
     function ITDepartment(id, admins) {
@@ -50,25 +79,21 @@ var ITDepartment = /** @class */ (function (_super) {
         _this.admins = admins;
         return _this;
     }
+    ITDepartment.prototype.describe = function () {
+        console.log("It Department Id " + this.id, this.employees);
+    };
     return ITDepartment;
 }(Department));
-var accounting = new ITDepartment("teys", ["selasieh"]);
-accounting.name = "accounting";
-accounting.addEmployee("Messi");
-accounting.addEmployee("Jane");
-accounting.printEmployeeInfor();
-// accounting.employees[2] = 'Kilom'
-// const accountingCopy = { name: "Dummy", describe: accounting.describe };
-// accountingCopy.describe();
-// console.log(accounting);
-accounting.describe();
-var It = new ITDepartment("d1231", ["selasieh"]);
+var It = new ITDepartment("ItId", ["selasieh"]);
 It.addEmployee("james");
+// It.name = 'Information and Technology'
 It.addEmployee("Berlin");
-It.printEmployeeInfor();
-console.log(It);
-// console.log(accounting);
+It.addEmployee("Jonh");
 It.describe();
+// It.printEmployeeInfor();
+// console.log(It);
+// console.log(accounting);
+// It.describe();
 var Finance = /** @class */ (function (_super) {
     __extends(Finance, _super);
     function Finance(id, reports) {
@@ -77,6 +102,9 @@ var Finance = /** @class */ (function (_super) {
         _this.lastReport = reports[0];
         return _this;
     }
+    Finance.prototype.describe = function () {
+        console.log("Finance Department ID " + this.id);
+    };
     Object.defineProperty(Finance.prototype, "mostRecentReport", {
         get: function () {
             if (this.lastReport) {
@@ -109,15 +137,16 @@ var Finance = /** @class */ (function (_super) {
     return Finance;
 }(Department));
 var finance = new Finance("123test123", []);
-console.log(finance);
+// console.log(finance);
 finance.addEmployee("Miles 8000");
 finance.addEmployee("Precell 84738");
 finance.addReport("There have been a couple of unfavorable outcomes");
 finance.addReport("These people they think that we are joking");
 finance.mostRecentReport = "Year End Report";
-console.log(finance.mostRecentReport);
 finance.addEmployee("Max");
 finance.addEmployee("Drake");
-finance.describe();
-finance.printEmployeeInfor();
-finance.getReports();
+// console.log(finance.mostRecentReport);
+// finance.describe();
+// finance.printEmployeeInfor();
+// finance.getReports();
+// finance.describe()

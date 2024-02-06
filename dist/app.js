@@ -49,7 +49,7 @@ var activeHobbies = ['Hiking'];
 // const hobbie1 = hobbies[0]
 // const hobbie2 = hobbies[1]
 var remainingHobbies = hobbies.slice(0);
-console.log(remainingHobbies, 'remaining hobbies');
+// console.log(remainingHobbies, 'remaining hobbies');
 // activeHobbies.push(hobbies[0], hobbies[1])
 activeHobbies.push.apply(activeHobbies, hobbies);
 var person1 = {
@@ -64,7 +64,7 @@ var newPerson = {
     address: "2343 Harare drive"
 };
 var userName = newPerson.fname, age = newPerson.age, address = newPerson.address;
-console.log(userName, age, address);
+// console.log(userName, age, address);
 var add = function () {
     var numbers = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -77,4 +77,4 @@ var add = function () {
 };
 var addedNumbers = add(1, 2, 4, 23);
 // const addedNumbers = add(1,2,4)                          ****__When working with Tuples__****
-console.log(addedNumbers);
+// console.log(addedNumbers);
