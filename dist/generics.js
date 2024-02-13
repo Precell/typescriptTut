@@ -16,3 +16,20 @@ function merge(objA, objB) {
 var myobj = merge({ name: 'Precell', hobbies: ['sports', 'music', 'xaines'] }, { age: 26 });
 var myobj2 = merge({ name: 'Precell', hobbies: ['sports', 'music', 'xaines'] }, { age: 26 });
 console.log(myobj, myobj2);
+function countAndDesribe(element) {
+    var descriptionText = "Got no value.";
+    if (element.length === 0) {
+        descriptionText = 'Got 1 element';
+    }
+    else {
+        descriptionText = "Got ".concat(element.length, " elements.");
+    }
+    return [element, descriptionText];
+}
+console.log(countAndDesribe("Hi There why aren't you answering my call?"));
+console.log(countAndDesribe(['warri', 'Do', 'pull', 'up']));
+// key of constraint
+function extractAndConvert(obj, key) {
+    return 'Value ' + obj[key];
+}
+extractAndConvert({ name: 'Precell' }, 'name');
